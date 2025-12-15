@@ -244,25 +244,6 @@ class LinalgSolver:
                 A[k], A[i_max] = A[i_max], A[k]
                 b[k], b[i_max] = b[i_max], b[k]
         return A, b
-        '''for i in range(n):
-            leader_index = i
-            max_value = abs(A[i][i])
-            for k in range(i + 1, self.n):
-                if abs(A[k][i]) > max_value:
-                    max_value = abs(A[k][i])
-                    leader_index = k
-            if abs(A[leader_index][i]) < 1e-15:
-                raise ArithmeticError("Матрица вырождена")
-            if leader_index != i:
-                A[i], A[leader_index] = A[leader_index], A[i]
-                b[i], b[leader_index] = b[leader_index], b[i]
-            for k in range(i + 1, self.n):
-                coef = A[k][i] / A[i][i] 
-                for j in range(i, self.n):
-                    A[k][j] -= coef * A[i][j]
-                b[k] -= coef * b[i]'''
-        return A, b
-
     
     def apply_givens_rotation(self, h, cs, sn, k):
         for i in range(k):
